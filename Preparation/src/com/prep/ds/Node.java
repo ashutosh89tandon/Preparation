@@ -1,4 +1,4 @@
-package com.prep;
+package com.prep.ds;
 
 public class Node
 {

@@ -3,6 +3,8 @@ package com.prep;
 import java.util.Arrays;
 import java.util.List;
 
+import com.prep.ds.Node;
+
 public class LeastCommonAncestor
 {
 	public static void main(String[] args) {
