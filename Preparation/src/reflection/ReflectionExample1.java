@@ -35,7 +35,7 @@ public class ReflectionExample1 {
 		
 		Method m2=c.getDeclaredMethod("add",new Class[]{int.class, int.class});
 		m2.setAccessible(true);
-		int z=(int) m2.invoke(obj, new Object[]{4,5});
+		int z=(Integer) m2.invoke(obj, new Object[]{4,5});
 		System.out.println(z);
 		
 		Constructor<?> ct=c.getConstructor();
