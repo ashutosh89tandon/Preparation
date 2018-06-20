@@ -2,10 +2,10 @@ package com.prep.ds;
 
 public class Node
 {
-	private int data;
-	private Node left;
-	private Node right;
-	private Node next;
+	public int data;
+	public Node left;
+	public Node right;
+	public Node next;
 	public Node(int data, Node left, Node right, Node next) {
 		super();
 		this.data = data;
@@ -65,6 +65,6 @@ public class Node
 			return false;
 		return true;
 	}
-	
-	
+
+
 }
