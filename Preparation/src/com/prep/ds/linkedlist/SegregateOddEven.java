@@ -6,12 +6,12 @@ public class SegregateOddEven
 {
 	public static void main(String[] args) 
 	{
-		LinkedList head=new LinkedList(13);
-		head.setNext(new LinkedList(15));
-		head.getNext().setNext(new LinkedList(12));
-		head.getNext().getNext().setNext(new LinkedList(10));
-		head.getNext().getNext().getNext().setNext(new LinkedList(20));
-		head.getNext().getNext().getNext().getNext().setNext(new LinkedList(14));
+		LinkedList head=new LinkedList(10);
+		head.setNext(new LinkedList(12));
+		head.getNext().setNext(new LinkedList(15));
+		head.getNext().getNext().setNext(new LinkedList(16));
+		head.getNext().getNext().getNext().setNext(new LinkedList(18));
+		head.getNext().getNext().getNext().getNext().setNext(new LinkedList(20));
 		head=segregate(head);
 		printList(head);
 	}
@@ -19,35 +19,49 @@ public class SegregateOddEven
 	private static LinkedList segregate(LinkedList head) 
 	{
 		LinkedList node=null;
+		LinkedList headNext=head.getNext();
 		LinkedList tail=getTail(head);
 		int n = getLength(head);
 		LinkedList temp=head;
 		LinkedList prev=null;
+		LinkedList oldTail=null;
 		int i=0;
 		boolean evenFound=false;
 		while(temp!=null && i<=n)
 		{
 			LinkedList next=temp.getNext();
-			if(temp.getData()%2!=0)
+			if(temp.getData()%2!=0 && (prev==null || prev.getData()%2==0))
 			{
-				if(prev!=null)
+				System.out.println("prev"+prev);
+				System.out.println("next"+next);
+				if(prev!=null && next!=null)
 					prev.setNext(next);
 				tail.setNext(temp);
+				oldTail=tail;
 				tail=temp;
+				tail.setNext(null);
+				System.out.println("tail"+tail + " tail.getNext"+tail.getNext());
 			}
 			else if(!evenFound)
 			{
 				node=temp;
 				evenFound=true;
+				prev=temp;
+			}
+			else
+			{
+				prev=temp;
 			}
 			i++;
-			prev=temp;
 			temp=next;
 		}
 		
-		prev.setNext(null);
+		if(!evenFound){
+			tail.setNext(headNext);
+			oldTail.setNext(null);
+		}
 		
-		return node;
+		return node==null?head:node;
 	}
 
 	private static int getLength(LinkedList head) 
