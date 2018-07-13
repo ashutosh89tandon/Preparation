@@ -116,11 +116,6 @@ public class QuickSortOnList
 	    return result;
 	}
 	
-	
-	
-
-	
-	
 	public static  void printList(LinkedList head)
 	{
 		LinkedList temp=head;
@@ -130,19 +125,6 @@ public class QuickSortOnList
 			System.out.print(temp+"->");
 			temp=temp.getNext();
 		}
-		System.out.println();
-	}
-	
-	public static  void printList(LinkedList head,LinkedList end)
-	{
-		LinkedList temp=head;
-		while(temp!=null && !temp.equals(end))
-		{
-			System.out.print(temp+"->");
-			temp=temp.getNext();
-		}
-		if(temp!=null)
-			System.out.print(temp);
 		System.out.println();
 	}
 }
