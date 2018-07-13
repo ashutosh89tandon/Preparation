@@ -20,116 +20,106 @@ public class QuickSortOnList
 		{
 			last=last.getNext();
 		}
-		quickSort(head,last);
+		head=quickSort(head,last);
 		
 		printList(head);
 		
 	}
 
-	private static void quickSort(LinkedList first, LinkedList last)
+	private static LinkedList quickSort(LinkedList head, LinkedList end)
 	{
-		if(!first.equals(last))
-		{
-			System.out.println("QuickSort : "+ first+" : "+last);
-			//LinkedList partition=getPartition(first,last,prev);
-			List<LinkedList> partition=getPartitionData(first,last);
-			System.out.println("partition : "+ partition);
-			printList(partition.get(1).getNext(),last);
-			printList(first,partition.get(0));
-			
-			quickSort(partition.get(1).getNext(),last);
-			quickSort(first,partition.get(0));
-		}
+		// base condition
+	    if (head==null || head == end)
+	        return head;
+	 
+	    LinkedList newHead = null, newEnd = null,pivot=null;
+	 
+	    // Partition the list, newHead and newEnd will be updated
+	    // by the partition function
+	    List<LinkedList> partition = getPartition(head, end);
+	 
+	    newHead=partition.get(0);
+	    newEnd=partition.get(1);
+	    pivot=partition.get(2);
+	    // If pivot is the smallest element - no need to recur for
+	    // the left part.
+	    if (newHead != pivot)
+	    {
+	        // Set the node before the pivot node as NULL
+	    	LinkedList tmp = newHead;
+	        while (!tmp.getNext().equals(pivot))
+	            tmp = tmp.getNext();
+	        tmp.setNext(null);
+	 
+	        // Recur for the list before pivot
+	        newHead = quickSort(newHead, tmp);
+	 
+	        // Change next of last node of the left half to pivot
+	        LinkedList node=newHead;
+	        while(node!=null && node.getNext()!=null)
+	        	node=node.getNext();
+	  
+	        node.setNext(pivot);
+	    }
+	 
+	    // Recur for the list after the pivot element
+	    pivot.setNext(quickSort(pivot.getNext(), newEnd));
+	 
+	    return newHead;
 	}
 
-	/*public static LinkedList getPartition(LinkedList first, LinkedList last, LinkedList prev) 
+	public static List<LinkedList> getPartition(LinkedList first, LinkedList last) 
 	{
-		LinkedList node=null;
-		LinkedList temp=first;
-		LinkedList prevOuter=null;
-		LinkedList prevInner=null;
-		while(temp.getNext()!=null)
-		{
-			LinkedList next=temp.getNext();
-			if(temp.getData()<temp.getNext().getData())
-			{
-				prevInner=node;
-				if(node==null)
-					node=first;
-				else
-					node=node.getNext();
-				swap(node,temp,prevInner,prevOuter);
-				prevOuter=node;
-			}
-			else
-			{
-				prevOuter=temp;
-			}
-			
-			temp=next;
-		}
-		prev=node;
-		System.out.println("prev : "+prev);
-		System.out.println("node.getNext :"+node.getNext());
-		return node.getNext();
-	}*/
-	
-	
-	private static List<LinkedList> getPartitionData(LinkedList first, LinkedList last) 
-	{
-		LinkedList node=null;
-		LinkedList temp=first;
+		LinkedList pivot = last;
+		LinkedList prev = null, cur = first, tail = pivot;
+		LinkedList newHead = null,  newEnd = null;
 		List<LinkedList> result=new ArrayList<LinkedList>();
-		while(temp.getNext()!=null)
-		{
-			LinkedList next=temp.getNext();
-			if(temp.getData()<temp.getNext().getData())
-			{
-				if(node==null)
-					node=first;
-				else
-					node=node.getNext();
-				int data = node.getData();
-				node.setData(temp.getData());
-				temp.setData(data);
-			}
-			temp=next;
-		}
-		
-		LinkedList prev=null;
-		if(node==null)
-		{
-			node=first;
-		}
-		else
-		{
-			node=node.getNext();
-		}
-		int data=node.getData();
-		node.setData(last.getData());
-		last.setData(data);
-		
-		result.add(prev==null?node:prev);
-		result.add(node);
-		return result;
+	 
+	    // During partition, both the head and end of the list might change
+	    // which is updated in the newHead and newEnd variables
+	    while (!cur.equals(pivot))
+	    {
+	        if (cur.getData() < pivot.getData())
+	        {
+	            // First node that has a value less than the pivot - becomes
+	            // the new head
+	            if ((newHead) == null)
+	                (newHead) = cur;
+	 
+	            prev = cur;  
+	            cur = cur.getNext();
+	        }
+	        else // If cur node is greater than pivot
+	        {
+	            // Move cur node to next of tail, and change tail
+	            if (prev!=null)
+	                prev.setNext(cur.getNext());
+	            LinkedList next = cur.getNext();
+	            cur.setNext(null);
+	            tail.setNext(cur);;
+	            tail = cur;
+	            cur = next;
+	        }
+	    }
+	 
+	    // If the pivot data is the smallest element in the current list,
+	    // pivot becomes the head
+	    if ((newHead) == null)
+	        (newHead) = pivot;
+	 
+	    // Update newEnd to the current last node
+	    (newEnd) = tail;
+	 
+	    result.add(newHead);
+	    result.add(newEnd);
+	    result.add(pivot);
+	    return result;
 	}
+	
+	
+	
 
-	/*private static void swap(LinkedList inner, LinkedList outer, LinkedList prevInner, LinkedList prevOuter) 
-	{
-		System.out.println("Inside swap");
-		LinkedList outerNext=outer.getNext();
-		LinkedList innerNext=inner.getNext();
-		inner.setNext(outerNext);
-		outer.setNext(innerNext);
-		
-		if(prevInner!=null)
-			prevInner.setNext(outer);
-		
-		if(prevOuter!=null)
-			prevOuter.setNext(inner);
-		
-		System.out.println("outside swap");
-	}*/
+	
 	
 	public static  void printList(LinkedList head)
 	{
