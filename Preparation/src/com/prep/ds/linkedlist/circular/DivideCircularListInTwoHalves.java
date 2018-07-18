@@ -7,11 +7,11 @@ public class DivideCircularListInTwoHalves
 	public static void main(String[] args)
 	{
 		LinkedList head=UtilMethods.getInitializedCircularList();
-		UtilMethods.printList(head);
+		UtilMethods.printCircularList(head);
 		System.out.println();
 		LinkedList nextHead=divideListInHalf(head);
-		UtilMethods.printList(head);
-		UtilMethods.printList(nextHead);
+		UtilMethods.printCircularList(head);
+		UtilMethods.printCircularList(nextHead);
 	}
 	
 	private static LinkedList divideListInHalf(LinkedList head) 

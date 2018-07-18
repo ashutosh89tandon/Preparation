@@ -1,10 +1,11 @@
 package com.prep.ds.linkedlist.circular;
 
+import com.prep.ds.DoublyLinkedList;
 import com.prep.ds.LinkedList;
 
 public class UtilMethods {
 
-	public static  void printList(LinkedList head)
+	public static  void printCircularList(LinkedList head)
 	{
 		LinkedList temp=head;
 		do
@@ -12,6 +13,28 @@ public class UtilMethods {
 			System.out.print(temp+"->");
 			temp=temp.getNext();
 		}while(temp!=head);
+		System.out.println();
+	}
+	
+	public static  void printDoublyList(DoublyLinkedList head)
+	{
+		DoublyLinkedList temp=head;
+		while(temp!=null)
+		{
+			System.out.println(temp+" Prev : "+temp.getPrev()+" Next: "+temp.getNext());
+			temp=temp.getNext();
+		}
+		System.out.println();
+	}
+	
+	public static  void printDoublyListFromEnd(DoublyLinkedList end)
+	{
+		DoublyLinkedList temp=end;
+		while(temp!=null)
+		{
+			System.out.println(temp+" Prev : "+temp.getPrev()+" Next: "+temp.getNext());
+			temp=temp.getPrev();
+		}
 		System.out.println();
 	}
 	

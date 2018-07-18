@@ -12,7 +12,7 @@ public class SortedInsert
 		head=sortedInsert(3,head);
 		head=sortedInsert(9,head);
 		head=sortedInsert(1,head);
-		UtilMethods.printList(head);
+		UtilMethods.printCircularList(head);
 		
 	}
 
