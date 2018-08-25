@@ -6,6 +6,7 @@ import com.businessgame.model.Player;
 public class JailHandler implements EventHandler
 {
 	private Bank bank;
+	private static final int FINE=150;
 	
 	public Bank getBank() {
 		return bank;
@@ -22,8 +23,8 @@ public class JailHandler implements EventHandler
 
 	public void handleEvent(Player player) {
 		//Deducting amount from player's balance and adding that in bank's balance
-		bank.setBalance(bank.getBalance()+150);
-		player.setBalance(player.getBalance()-150);
+		bank.setBalance(bank.getBalance()+FINE);
+		player.setBalance(player.getBalance()-FINE);
 	}
 
 }

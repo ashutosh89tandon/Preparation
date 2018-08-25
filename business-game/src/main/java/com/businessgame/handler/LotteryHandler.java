@@ -7,6 +7,7 @@ public class LotteryHandler implements EventHandler
 {
 
 	private Bank bank;
+	private static final int REWARD=200;
 
 	public Bank getBank() {
 		return bank;
@@ -23,8 +24,8 @@ public class LotteryHandler implements EventHandler
 
 	public void handleEvent(Player player) {
 		//Deducting amount from bank's balance and adding that in player's balance
-		bank.setBalance(bank.getBalance()-200);
-		player.setBalance(player.getBalance()+200);
+		bank.setBalance(bank.getBalance()-REWARD);
+		player.setBalance(player.getBalance()+REWARD);
 
 	}
 
