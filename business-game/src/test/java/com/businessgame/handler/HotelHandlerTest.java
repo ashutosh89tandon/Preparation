@@ -15,7 +15,7 @@ public class HotelHandlerTest {
 	@Test
 	public void eventHandlerTest() {
 		Bank bank=new Bank(5000);
-		Player player=new Player(0, 1000, new ArrayList<Hotel>(), 0);
+		Player player=new Player(0, 1000, new ArrayList<Hotel>(), 0,-1);
 		Hotel hotel=new Hotel(0,null, HotelCategory.SILVER, false);
 		EventHandler handler=EventParser.getEventHandler("H", bank);
 		((HotelHandler)handler).setHotel(hotel);

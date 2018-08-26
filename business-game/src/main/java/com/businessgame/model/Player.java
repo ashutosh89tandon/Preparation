@@ -8,7 +8,16 @@ public class Player
 	private int balance;
 	private List<Hotel> hotels;
 	private int chance;
+	private int lastPosition;
 	
+	public int getLastPosition() {
+		return lastPosition;
+	}
+
+	public void setLastPosition(int lastPosition) {
+		this.lastPosition = lastPosition;
+	}
+
 	public int getChance() {
 		return chance;
 	}
@@ -38,12 +47,13 @@ public class Player
 
 	
 
-	public Player(int id, int balance, List<Hotel> hotels, int chance) {
+	public Player(int id, int balance, List<Hotel> hotels, int chance,int lastPosition) {
 		super();
 		this.id = id;
 		this.balance = balance;
 		this.hotels = hotels;
 		this.chance = chance;
+		this.lastPosition=lastPosition;
 	}
 
 	@Override

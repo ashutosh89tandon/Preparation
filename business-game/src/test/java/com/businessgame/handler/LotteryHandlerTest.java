@@ -16,7 +16,7 @@ public class LotteryHandlerTest {
 	@Test
 	public void eventHandlerTest() {
 		Bank bank=new Bank(5000);
-		Player player=new Player(0, 1000, new ArrayList<Hotel>(), 0);
+		Player player=new Player(0, 1000, new ArrayList<Hotel>(), 0,-1);
 		EventHandler handler=EventParser.getEventHandler("L", bank);
 		handler.handleEvent(player);
 		
@@ -27,7 +27,7 @@ public class LotteryHandlerTest {
 	@Test
 	public void eventHandlerNullTest() {
 		Bank bank=new Bank(5000);
-		Player player=new Player(0, 1000,new ArrayList<Hotel>(), 0);
+		Player player=new Player(0, 1000,new ArrayList<Hotel>(), 0,-1);
 		EventHandler handler=EventParser.getEventHandler(null, bank);
 		handler.handleEvent(player);
 		

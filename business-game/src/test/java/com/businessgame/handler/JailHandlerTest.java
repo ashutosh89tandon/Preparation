@@ -16,7 +16,7 @@ public class JailHandlerTest {
 	public void handleEventTest()
 	{
 		Bank bank=new Bank(5000);
-		Player player=new Player(0, 1000,new ArrayList<Hotel>(), 0);
+		Player player=new Player(0, 1000,new ArrayList<Hotel>(), 0,-1);
 		EventHandler handler=EventParser.getEventHandler("J", bank);
 		handler.handleEvent(player);
 		

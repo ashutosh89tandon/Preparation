@@ -18,9 +18,7 @@ public class Caller
 {
 	public static void main(String[] args) throws IOException 
 	{
-
 		Bank bank=new Bank(5000);
-		int currentPosition=-1;
 		List<Hotel> hotelList=new ArrayList<Hotel>();
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("Enter Cells");
@@ -37,7 +35,7 @@ public class Caller
 		
 		for(int i =0;i<numberOfPlayers;i++)
 		{
-			players.add(new Player(i, 1000, new ArrayList<Hotel>(),0));
+			players.add(new Player(i, 1000, new ArrayList<Hotel>(),0,-1));
 		}
 		
 		for(int i=0;i<diceOutputArray.length;i++)
@@ -45,8 +43,9 @@ public class Caller
 			Player player=players.get(i%numberOfPlayers);
 			if(player.getChance()==10)
 				continue;
-			currentPosition=currentPosition+Integer.parseInt(diceOutputArray[i]);
-			String cellValue=cellsArray[currentPosition%cellsArray.length];
+			int currentPosition=(player.getLastPosition()+Integer.parseInt(diceOutputArray[i]))%cellsArray.length;
+			player.setLastPosition(currentPosition);
+			String cellValue=cellsArray[currentPosition];
 			EventHandler handler=EventParser.getEventHandler(cellValue, bank);
 			if(cellValue.equals("H"))
 			{
