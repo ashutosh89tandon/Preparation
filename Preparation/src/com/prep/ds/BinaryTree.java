@@ -5,10 +5,24 @@ public class BinaryTree<T>
 	private T data;
 	private BinaryTree<T> left;
 	private BinaryTree<T> right;
+	private int level;
+	public int getLevel() {
+		return level;
+	}
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	public BinaryTree(T data, int level) {
+		super();
+		this.data = data;
+		this.level=level;
+	}
+	
 	public BinaryTree(T data) {
 		super();
 		this.data = data;
 	}
+	
 	public T getData() {
 		return data;
 	}
