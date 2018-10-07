@@ -6,6 +6,7 @@ public class BinaryTree<T>
 	private BinaryTree<T> left;
 	private BinaryTree<T> right;
 	private int level;
+	private int arrayIndex;
 	public int getLevel() {
 		return level;
 	}
@@ -77,6 +78,12 @@ public class BinaryTree<T>
 		} else if (!right.equals(other.right))
 			return false;
 		return true;
+	}
+	public int getArrayIndex() {
+		return arrayIndex;
+	}
+	public void setArrayIndex(int arrayIndex) {
+		this.arrayIndex = arrayIndex;
 	}
 	
 	
