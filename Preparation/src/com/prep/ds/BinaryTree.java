@@ -8,6 +8,7 @@ public class BinaryTree<T>
 	private int level;
 	private int arrayIndex;
 	private int count;
+	private BinaryTree<T> parent;
 	public int getLevel() {
 		return level;
 	}
@@ -91,6 +92,12 @@ public class BinaryTree<T>
 	}
 	public void setCount(int count) {
 		this.count = count;
+	}
+	public BinaryTree<T> getParent() {
+		return parent;
+	}
+	public void setParent(BinaryTree<T> parent) {
+		this.parent = parent;
 	}
 	
 	
