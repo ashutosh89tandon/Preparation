@@ -1,8 +1,9 @@
 package com.prep.ds;
 
-public class BinaryTree<T>
+public class BinaryTree<T> implements Cloneable
 {
 	private T data;
+	private T summedValue;
 	private BinaryTree<T> left;
 	private BinaryTree<T> right;
 	private int level;
@@ -100,5 +101,23 @@ public class BinaryTree<T>
 		this.parent = parent;
 	}
 	
+	@Override
+	public Object clone()
+	{
+		try {
+			return super.clone();
+		} catch (CloneNotSupportedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
+	public T getSummedValue() {
+		return summedValue;
+	}
+	public void setSummedValue(T summedValue) {
+		this.summedValue = summedValue;
+	}
 	
 }
