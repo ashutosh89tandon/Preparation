@@ -6,6 +6,7 @@ public class BinaryTree<T> implements Cloneable
 	private T summedValue;
 	private BinaryTree<T> left;
 	private BinaryTree<T> right;
+	private BinaryTree<T> next;
 	private int level;
 	private int arrayIndex;
 	private int count;
@@ -118,6 +119,12 @@ public class BinaryTree<T> implements Cloneable
 	}
 	public void setSummedValue(T summedValue) {
 		this.summedValue = summedValue;
+	}
+	public BinaryTree<T> getNext() {
+		return next;
+	}
+	public void setNext(BinaryTree<T> next) {
+		this.next = next;
 	}
 	
 }
