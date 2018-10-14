@@ -14,20 +14,46 @@ public class BoundaryNodesAntiClockWise {
 		root.getRight().setRight(new BinaryTree<Integer>(21,2));
 		root.getLeft().getLeft().setLeft(new BinaryTree<Integer>(16, 3));
 		root.getLeft().getLeft().setRight(new BinaryTree<Integer>(19,3));
-		System.out.print(root.getData()+"->");
+		root.getLeft().getRight().setRight(new BinaryTree<Integer>(27, 3));
+		root.getLeft().getRight().getRight().setRight(new BinaryTree<Integer>(26, 3));
 		print(root,0);	
 	}
 
 	private static void print(BinaryTree<Integer> root,int pos) {
 		if(root==null)
 			return;
-		if(pos<0 || (root.getLeft()==null && root.getRight()==null))
+		printLeftMost(root);
+		printLeaf(root);
+		printRightMost(root.getRight());
+		
+		
+	}
+
+	private static void printLeaf(BinaryTree<Integer> root) {
+		if(root==null)
+			return;
+		
+		printLeaf(root.getLeft());
+		printLeaf(root.getRight());
+		if(root.getLeft()==null && root.getRight()==null)
 			System.out.print(root.getData()+"->");
-		print(root.getLeft(),pos-1);
-		print(root.getRight(),pos+1);
-		if(pos>0 && (root.getLeft()!=null || root.getRight()!=null))
-		{
-			System.out.print(root.getData()+"->");
-		}
+		
+		
+	}
+
+	private static void printRightMost(BinaryTree<Integer> right) {
+		if(right.getRight()==null)
+			return;
+		System.out.print(right.getData()+"->");
+		printLeftMost(right.getRight());
+		
+	}
+
+	private static void printLeftMost(BinaryTree<Integer> root) {
+		if(root.getLeft()==null)
+			return;
+		System.out.print(root.getData()+"->");
+		printLeftMost(root.getLeft());
+		
 	}
 }
