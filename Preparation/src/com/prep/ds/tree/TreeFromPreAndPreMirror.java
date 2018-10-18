@@ -1,5 +1,8 @@
 package com.prep.ds.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import com.prep.ds.BinaryTree;
 
 public class TreeFromPreAndPreMirror {
@@ -10,7 +13,7 @@ public class TreeFromPreAndPreMirror {
 		int preM[] = {1,3,7,6,2,5,4};
 		BinaryTree<Integer> root=new BinaryTree<Integer>(pre[preIndex++]);
 		constructTree(pre,preM,root,1,preM.length-1);
-		System.out.println(root);
+		print(root);
 	}
 
 	private static void constructTree(int[] pre, int[] preM, BinaryTree<Integer> root,int start, int end) 
@@ -31,5 +34,23 @@ public class TreeFromPreAndPreMirror {
 			if(value==preM[i])
 				return i;
 		return -1;
+	}
+	
+	private static void print(BinaryTree<Integer> root) 
+	{
+		Queue<BinaryTree<Integer>> queue=new LinkedList<BinaryTree<Integer>>();
+		queue.offer(root);
+		while(!queue.isEmpty())
+		{
+			BinaryTree<Integer> tempNode=queue.poll();
+			System.out.print(tempNode.getData()+"->");
+			BinaryTree<Integer> left=tempNode.getLeft();
+			BinaryTree<Integer> right=tempNode.getRight();
+			
+			if(left!=null)
+				queue.offer(left);
+			if(right!=null)
+				queue.offer(right);
+		}
 	}
 }
