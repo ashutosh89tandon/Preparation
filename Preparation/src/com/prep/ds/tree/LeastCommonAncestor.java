@@ -19,7 +19,7 @@ public class LeastCommonAncestor {
 		System.out.println("Least common Ancestor is :"+getLeastCommonAncestor(root, nodes));
 	}
 
-	private static BinaryTree<Integer> getLeastCommonAncestor(BinaryTree<Integer> root, List<BinaryTree<Integer>> nodes) {
+	public  static BinaryTree<Integer> getLeastCommonAncestor(BinaryTree<Integer> root, List<BinaryTree<Integer>> nodes) {
 		if(root==null)
 			return null;
 		
