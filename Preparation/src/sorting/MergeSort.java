@@ -8,7 +8,7 @@ public class MergeSort {
 			System.out.print(a[i]+"->");
 	}
 
-	private static void mergeSort(int[] a,int start,int end)
+	public static void mergeSort(int[] a,int start,int end)
 	{
 		if(start<end)
 		{

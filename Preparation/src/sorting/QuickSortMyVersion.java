@@ -10,7 +10,7 @@ public class QuickSortMyVersion {
 			System.out.print(a[i]+"->");
 	}
 
-	private static void quickSort(int[] a, int start, int end) {
+	public static void quickSort(int[] a, int start, int end) {
 		
 		if(start<end)
 		{
@@ -48,7 +48,6 @@ public class QuickSortMyVersion {
 					swap(a,i+1,i);
 				}
 		}
-		a[end]=pivot;
 		return index;
 	}
 	
@@ -57,5 +56,11 @@ public class QuickSortMyVersion {
 		int temp=a[i];
 		a[i]=a[j];
 		a[j]=temp;
+	}
+	
+	public static void printArray(int a[])
+	{
+		for(int i=0;i<a.length;i++)
+			System.out.print(a[i]+"->");
 	}
 }
