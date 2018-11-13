@@ -29,7 +29,7 @@ class MaxSubseequence {
 				{
 					lists.add(new ArrayList<>());
 					lists.get(i).add(array[i]);
-					getMaxSumRecursive(array,k-1,i,lists,k);
+					getMaxSumRecursive(array,k-1,i,lists,k, array[i]);
 				}
 				System.out.println(maxSum);
 			}
@@ -40,7 +40,7 @@ class MaxSubseequence {
 		}
 	}
 
-	private static void getMaxSumRecursive(int[] array, int currentK, int currentIndex, List<List<Integer>> lists, int k) 
+	private static void getMaxSumRecursive(int[] array, int currentK, int currentIndex, List<List<Integer>> lists, int k, int currentSum) 
 	{
 		
 		if(currentIndex+1==array.length)
@@ -49,11 +49,9 @@ class MaxSubseequence {
 		ArrayList<Integer> list=new ArrayList<>(lists.get(lastListIndex));
 		if(currentK==0)
 		{
-			int localSum=0;
-			for(int num: list)
-				localSum+=num;
-			if(localSum>maxSum)
-				maxSum=localSum;
+			
+			if(currentSum>maxSum)
+				maxSum=currentSum;
 			return;
 		}
 		
@@ -62,11 +60,8 @@ class MaxSubseequence {
 			
 			if(list.size()==k)
 			{
-				int localSum=0;
-				for(int num: list)
-					localSum+=num;
-				if(localSum>maxSum)
-					maxSum=localSum;
+				if(currentSum>maxSum)
+					maxSum=currentSum;
 				continue;
 			}
 			if(list.get(list.size()-1)<=array[i]){
@@ -75,7 +70,7 @@ class MaxSubseequence {
 				List<List<Integer>> tempLists=new ArrayList<>(lists);
 				tempLists.remove(lastListIndex);
 				tempLists.add(templist);
-				getMaxSumRecursive(array,currentK-1,i,tempLists, k);
+				getMaxSumRecursive(array,currentK-1,i,tempLists, k,currentSum+array[i]);
 			}
 		}
 		
