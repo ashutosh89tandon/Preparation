@@ -30,7 +30,7 @@ public class LongestCommonSubSequence
 		System.out.println("length : "+length);
 	}
 
-	private static int findLongestCommonSubSequenceDP(String str, String str1) {
+	public static int findLongestCommonSubSequenceDP(String str, String str1) {
 		int L[][]=new int[str.length()+1][str1.length()+1];
 		for(int i=0;i<str.length()+1;i++)
 			for(int j=0;j<str1.length()+1;j++ )
