@@ -2,8 +2,8 @@ package com.prep.ds;
 
 public class LinkedList
 {
-	private int data;
-	private LinkedList next;
+	public int data;
+	public LinkedList next;
 	public int getData() {
 		return data;
 	}
